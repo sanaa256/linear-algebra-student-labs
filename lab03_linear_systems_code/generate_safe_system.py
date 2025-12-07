@@ -1,6 +1,4 @@
-from lu_factorisation import lu_factorisation
 import numpy as np
-
 from scipy.sparse import diags
 
 def generate_safe_system(n):
@@ -28,20 +26,3 @@ def generate_safe_system(n):
     b = A @ x_true
 
     return A, b, x_true
-
-A_large, b_large, x_large = generate_safe_system(100)
-
-def determinant(A):
-    n = A.shape[0]
-    L, U = lu_factorisation(A)
-
-    det_L = 1.0
-    det_U = 1.0
-
-    for i in range(n):
-        det_L *= L[i, i]
-        det_U *= U[i, i]
-
-    return det_L * det_U
-
-print(determinant(A_large))
