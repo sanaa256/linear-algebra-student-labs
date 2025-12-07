@@ -13,13 +13,9 @@ results = []
 
 n_repeats = 10
 
-A = np.array([[2.0, 1.0, 4.0], [1.0, 2.0, 2.0], [2.0, 4.0, 6.0]])
-b = np.array([[12.0], [9.0], [22.0]])
-
-#for n in sizes:
-for n in range(1):
+for n in sizes:
     # Generate a random system of linear equations of size n
-    # A, b, x = generate_safe_system(n)
+    A, b, x = generate_safe_system(n)
 
     # Total time across all repeats at size n
     fs_total_time = 0
@@ -27,8 +23,7 @@ for n in range(1):
     lu_total_time = 0
 
     start_time = time.perf_counter()
-    #for i in range(n_repeats):
-    for i in range(1):
+    for i in range(n_repeats):
         lu_start_time = time.perf_counter()
         L, U = lu_factorisation(A)
         lu_end_time = time.perf_counter()
@@ -51,7 +46,6 @@ for n in range(1):
 
     end_time = time.perf_counter()
     
-    print(x)
     avg_total_time = (end_time - start_time) / n_repeats
     avg_fs_time = fs_total_time / n_repeats
     avg_bs_time = bs_total_time / n_repeats
@@ -88,5 +82,3 @@ plt.legend(loc = "upper left")
 plt.grid()
 
 plt.show()
-
-
