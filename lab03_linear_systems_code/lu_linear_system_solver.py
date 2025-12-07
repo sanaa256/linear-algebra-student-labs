@@ -6,25 +6,29 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 
-sizes = [2**j for j in range(1, 11)]
+sizes = [2 ** j for j in range(1, 11)]
 
-# list of dicts. each dict has keys: size, lu_time, fs_time, bs_time, total_time
+# List of dicts. Each dict has keys: size, lu_time, fs_time, bs_time, total_time
 results = []
 
 n_repeats = 10
 
-for n in sizes:
-    # Generate a random system of linear equations of size n
-    A, b, x = generate_safe_system(n)
+A = np.array([[2.0, 1.0, 4.0], [1.0, 2.0, 2.0], [2.0, 4.0, 6.0]])
+b = np.array([[12.0], [9.0], [22.0]])
 
-    # total time across all repeats at size n
+#for n in sizes:
+for n in range(1):
+    # Generate a random system of linear equations of size n
+    # A, b, x = generate_safe_system(n)
+
+    # Total time across all repeats at size n
     fs_total_time = 0
     bs_total_time = 0
     lu_total_time = 0
 
     start_time = time.perf_counter()
-    for i in range(n_repeats):
-
+    #for i in range(n_repeats):
+    for i in range(1):
         lu_start_time = time.perf_counter()
         L, U = lu_factorisation(A)
         lu_end_time = time.perf_counter()
@@ -47,6 +51,7 @@ for n in sizes:
 
     end_time = time.perf_counter()
     
+    print(x)
     avg_total_time = (end_time - start_time) / n_repeats
     avg_fs_time = fs_total_time / n_repeats
     avg_bs_time = bs_total_time / n_repeats
@@ -62,27 +67,26 @@ for n in sizes:
         }
     )
 
-print(results)
-
 # Extract times for plotting
-
 lu_times = [result["lu_time"] for result in results]
 fs_times = [result["fs_time"] for result in results]
 bs_times = [result["bs_time"] for result in results]
 total_times = [result["total_time"] for result in results]
 
 marker_size = 5
-plt.plot(sizes, lu_times, 'o', color = 'green', markersize = marker_size, label = "Forward substitution")
-plt.plot(sizes, fs_times, 'o', color = 'red', markersize = marker_size, label = "Forward substitution")
-plt.plot(sizes, bs_times, 'o', color = 'blue', markersize = marker_size, label = "Backward substitution")
-plt.plot(sizes, total_times, 'o', color = 'black', markersize = marker_size, label = "Total")
+plt.plot(sizes, lu_times, "-o", color = "green", markersize = marker_size, label = "LU factorisation")
+plt.plot(sizes, fs_times, "-o", color = "red", markersize = marker_size, label = "Forward substitution")
+plt.plot(sizes, bs_times, "-o", color = "blue", markersize = marker_size, label = "Backward substitution")
+plt.plot(sizes, total_times, "-o", color = "black", markersize = marker_size, label = "Total")
 
 plt.xscale('log')
 plt.yscale('log')
-
 plt.title("Runtime with LU factorisation")
 plt.xlabel("n")
 plt.ylabel("time (s)")
+plt.legend(loc = "upper left")
+plt.grid()
 
 plt.show()
+
 

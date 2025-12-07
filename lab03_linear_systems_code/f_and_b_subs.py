@@ -1,4 +1,5 @@
 import numpy as np
+
 def system_size(A, b):
     """
     Validate the dimensions of a linear system and return its size.
