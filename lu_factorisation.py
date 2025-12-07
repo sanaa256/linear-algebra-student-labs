@@ -33,8 +33,6 @@ def lu_factorisation(A):
     L = np.eye(A.shape[0])
     U = np.zeros_like(A)
     
-    print(L)
-    print(U)
     for j in range(n):
         for i in range(j + 1):
             # Compute factors u_{ij}
@@ -50,5 +48,5 @@ def lu_factorisation(A):
     
     return L, U
 
-# print (lu_factorisation(np.array([[2,1,4], [1,2,2], [2,4,6]])))
-# print (lu_factorisation(np.array([[4,2,0], [2,3,1], [0,1,2.5]])))
+print (lu_factorisation(np.array([[2,1,4], [1,2,2], [2,4,6]])))
+print (lu_factorisation(np.array([[4,2,0], [2,3,1], [0,1,2.5]])))
