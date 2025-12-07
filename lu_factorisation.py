@@ -51,4 +51,4 @@ def lu_factorisation(A):
     
     return L, U
 
-print (lu_factorisation(np.array([[2,1,4], [1,2,2], [2,4,6]], dtype=float)))
+# print (lu_factorisation(np.array([[2,1,4], [1,2,2], [2,4,6]], dtype=float)))
