@@ -6,7 +6,7 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 
-sizes = [2 ** j for j in range(1, 11)]
+sizes = [2 ** j for j in range(1, 10)]
 
 # List of dicts. Each dict has keys: size, lu_time, fs_time, bs_time, total_time
 results = []

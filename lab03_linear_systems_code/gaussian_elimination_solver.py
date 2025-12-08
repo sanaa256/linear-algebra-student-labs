@@ -1,9 +1,9 @@
 from generate_safe_system import *
 from f_and_b_subs import *
 
-import numpy as p
+import numpy as np
 import time
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 # ERO implementations
 
@@ -19,7 +19,7 @@ def row_swap(A, b, p, q):
     Parameters
     ----------
     A : numpy.ndarray
-        A 2D NumPy array of shape ``(n, n)`` representing the coefficient matrix
+        A 2D NumPy arr2025-12-08T10:59:31.189241968Z,d4ca6b,r_d6ff19ad,T0_list,success,,95,200,offay of shape ``(n, n)`` representing the coefficient matrix
         of the linear system.
     b : numpy.ndarray
         A 2D NumPy array of shape ``(n, 1)`` representing the right-hand side
@@ -171,7 +171,7 @@ def gaussian_elimination(A, b, verbose=False):
             print_array(b)
             print()
 
-sizes = [2**j for j in range(1, 11)]
+sizes = [2**j for j in range(1, 10)]
 
 # list of dicts. each dict has keys: size, ge_time, bs_time, total_time
 results = []
