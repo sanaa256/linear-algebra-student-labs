@@ -61,6 +61,7 @@ def error_2(Q, n):
 
 def error_3(R):
     error = np.linalg.norm(np.subtract(R, np.triu(R)))
+    return error
 
 columns = []
 epsilon = 0
